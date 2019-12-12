@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:; default-src gap://ready file://* *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Your app title -->
+  <title>CiclApp</title>
+
+  <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+   -->
+
+  <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+  <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+  <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Leaflet's CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+  <!-- Leaflet routing machine's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  
+  <!-- Leaflet control geocoder's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" /> 
+
+  <!-- Leaflet locatecontrol's CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  <script src="https://kit.fontawesome.com/dd8d792c03.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Status bar overlay for full screen mode (PhoneGap) -->
+  <div class="statusbar-overlay"></div>
+
+  <!-- Panels overlay-->
+  <div class="panel-overlay"></div>
+  <!-- Left panel with reveal effect-->
+  <div class="panel panel-left panel-reveal">
+    <!-- <div class="content-block"> -->
+    <div class="content-block-title">Menú</div>
+      <div class="list-block accordion-list">
+        <ul>
+          <li class="accordion-item"><a href="#" class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title">Perfil</div>
+                </div></a>
+               <div class="accordion-item-content">
+                 <div class="content-block">
+                  <p>Item 1 content. Lorem ipsum dolor sit amet...</p>
+                 </div>
+              </div>
+          </li>
+          <li class="accordion-item"><a href="#" class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title">Iniciar sesión</div>
+              </div></a>
+              <div class="accordion-item-content">
+                   <div class="content-block">
+                      <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+                      &nbsp;&nbsp;&nbsp;
+                      <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+                      <br/><br/>
+                      <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+                      &nbsp;&nbsp;&nbsp;
+                      <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+                      &nbsp;&nbsp;&nbsp;
+                      <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+                      &nbsp;&nbsp;&nbsp;
+                      <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+                
+                      
+                  </div>
+              </div>
+                  </li>
+                  <li class="accordion-item"><a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Datos</div>
+                      </div></a>
+                    <div class="accordion-item-content">
+                      <div class="content-block">
+                        <!-- Container where we'll display the user details -->
+                      <div class="quickstart-user-details-container">
+                        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                        <div>Firebase auth <code>currentUser</code> object value:</div>
+                          <pre><code id="quickstart-account-details">null</code></pre>
+                      </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+               
+            
+       
+            <!-- </div> -->
+            
+        </div>
+    </div>
+
+
+    
+
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+              <div class="navbar-inner">
+                  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                  <div class="center sliding">CiclApp</div>
+                  <div class="right">
+                      <!--
+                        Right link contains only icon - additional "icon-only" class
+                        Additional "open-panel" class tells app to open panel when we click on this link
+                      -->
+                      <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                  </div>
+              </div>
+          </div> 
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                        
+                              
+                    <!-- Scrollable page content -->
+                    <div class="page-content">
+                        <!-- <div class="content-block"> -->
+
+                          <div id="mapid"></div>
+       
+
+
+   
+                            
+                            <!-- Link to another page -->
+                            <a href="about.html">2019 Elízabeth Hortúa</a>
+                        
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet routing machine's JS -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!-- Leaflet control geocoder's JS -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!-- Leaflet locatecontrol JS -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="js/firebase.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+
+</html>
